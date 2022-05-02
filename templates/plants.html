@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../static/js/animate.js"></script>  
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/icon/plants.css">
+    <title>Plants</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;/*改整个网页的字体*/
+    }
+    img{
+        display: block;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .plant{
+        width: 1006px;
+        height: 672px;
+        margin: 0 auto;
+    }
+    .plant .title{
+        width: 100%;
+        height: 58px;
+    }
+    .plant .title h1{
+        width: 234px;
+        height: 58px;
+        float: left;
+        text-align: left;   
+        color: #333;
+        font-size: 22px;
+        font-weight: 200;
+        line-height: 68px;
+    }
+    .plant .title .h2{
+        width: 234px;
+        height: 58px;
+        float: right;
+        color: #424242;
+        font-size: 16px;
+        font-weight: 200;
+        text-align: right;
+        line-height: 68px;
+        cursor: pointer;
+    }
+    .plant .title .h2:hover{
+        color: #ff6700;
+    }
+    .plant .content{
+        width: 100%;
+        height: 614px;
+    }
+    .plant .content .box{
+        width: 234px;
+        height: 260px;
+        background-color: #FFFFFF;
+        float: left;
+        margin-left: 14px;
+        margin-bottom: 14px;
+    }
+    .plant .content .box:hover{
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+        transform: translate(0,-3px);
+    }
+    .plant .content .box{
+        transition:all 0.5s;
+    }
+    .plant .content .box img{
+        margin: 0 auto;
+    }
+    .plant .content .box h3 {
+        line-height: 21px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+    }
+    .plant .content .box h3 a{
+        color: #333333;
+    }
+    .plant .content .box h4{
+        font-weight: lighter;
+        margin: 0 10px 10px;
+        height: 18px;
+        font-size: 12px;
+        color: #B0B0B0;
+        text-align: center;
+    }
+    .plant .content .box h5{
+        line-height: 21px;
+        font-size: 14px;
+        font-weight: lighter;
+        margin: 0 10px 14px;
+        color: #ff6700;
+        text-align: center;
+    }
+    .plant .content .box h5 .h6{
+        margin: 0 10px 14px;
+        color: #b0b0b0;
+        text-align: center;
+        text-decoration: Line-through;
+    }
+    .plant .content .box2{
+        margin-bottom: 0;
+    }
+    .plant .content .box3{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .plant .content .box3 .top{
+        margin:0 auto;
+        background-color: #e53935;
+        width: 64px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .plant .content .box3 .top1{
+        height: 20px;
+    }
+    .form-control{
+        width: 140px;
+        margin:10px 25px;
+    }
+    @font-face {
+        font-family: "iconfont"; /* Project id  */
+        src: url('iconfont.ttf?t=1651131408208') format('truetype');
+    }
+      
+    .iconfont {
+        font-family: "iconfont" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .icon-fangdajing:before {
+        content: "\e637";
+    }
+</style>
+<body style="background-color:transparent"> 
+    <div style="margin:0 auto 10px;width:1006px;border-top:2px solid #cccccc;border-bottom:2px solid #cccccc">
+        <select class="form-control" id="Type">
+            <option value="all">Type</option>
+            <option value="ferns">ferns</option>
+            <option value="grasses-and-clumping">grasses-and-clumping</option>
+            <option value="ground-covers">ground-covers</option>
+            <option value="shrubs-large">shrubs-large</option>
+            <option value="shrubs-small">shrubs-small</option>
+            <option value="vines-and-scramblers">vines-and-scramblers</option>
+            <option value="other">other</option>
+        </select>
+        <select class="form-control" id="Sunshine">
+            <option value="all">Sunshine</option>
+            <option value="direct">direct</option>
+            <option value="full">full</option>
+            <option value="mixed">mixed</option>
+            <option value="shady">shady</option>
+        </select>
+        <select class="form-control" id="Water">
+            <option value="all">Water</option>
+            <option value="low">low</option>
+            <option value="med">med</option>
+            <option value="high">high</option>
+            <option value="waterplant">waterplant</option>
+        </select>
+        <a href="javascript:openurl();" style="color:#cc0000">Apply</a>
+        <input type="text" class="form-control" placeholder="Please enter the name of plants to serarch" style="width:280px;" id="Name">
+        <a href="javascript:openurl_2();"><span class="iconfont icon-fangdajing" style="font-size:26px"></span></a>
+    </div>
+    <div class="plant">
+        <div class="content">
+        {% if data %}
+            {% for item in data %}
+            <div class="box box3" style="background-color: #fcfcfc">
+                <div class="top1"></div>
+                <a href="/content/{{ item.plant_id }}" target="screen">
+                    <div style="width:160px;height:120px;overflow:hidden;margin:0 auto;">
+                    <img src="../static/img/{{ item.plant_latin_name }}.jpg" class="imgBox" width="160px"> 
+                    </div>              
+                    <h3>{{ item.plant_latin_name }}</h3>
+                </a>               
+                <h5>{{ item.plant_family }}</h5>
+                <h4>{{ item.plant_common_name }}</h4>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    {% if data %}
+    <div style='width:300px;margin:0 auto'>{{ pag.strs|safe }}</div>   
+    {% endif %}
+</body>
+<script>
+    function openurl(){
+        let Type = document.getElementById('Type').value
+        let Sunshine = document.getElementById('Sunshine').value
+        let Water = document.getElementById('Water').value
+        window.location.href = '/plants?'+'Type='+Type+'&Sunshine='+Sunshine+'&Water='+Water;
+    }
+    function openurl_2(){
+        let Name = document.getElementById('Name').value
+        window.location.href = '/plants?'+'Name='+Name;
+    }
+</script>
+</html>

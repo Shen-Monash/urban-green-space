@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="#">
+    <title>Content</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        width: 1006px;
+        height: 800px;
+        margin: auto;
+    }
+    .content p{
+        padding-left:20px;
+        width:380px;
+        word-break:break-all;
+        word-wrap:break-word;
+    }
+    .bottom{
+        font-size:23px;
+        width:966px;
+        word-break:break-all;
+        word-wrap:break-word;
+    }
+</style>
+<body style="background-color:transparent">
+    <div style="padding-top:20px;">
+        <p style="font-size:30px;text-align:center;">{{ data.plant_latin_name }}</p>
+        <div style="height:40px;">
+            <a class="btn btn-default" href="javascript:history.back(-1);" role="button" style="float:right;">Go back</a>
+        </div>
+        <div style="height:400px;padding-top:50px;">
+            <div style="width:486px;height:400px;;float:left;overflow:hidden;border-radius:20px;">
+                <img src="../static/img/{{ data.plant_latin_name }}.jpg" width="486px" style="border-radius:20px;overflow:hidden">
+            </div>
+            <div class="content" style="width:480px;height:400px;float:right;font-size:19px;">
+                <p style="font-size:21px;">Commonly known as {{ data.plant_latin_name }}</p>
+                <p>&nbsp;</p>
+                <p>Family: {{ data.plant_family }}</p>
+                <p>Type: {{ data.plant_type }}</p>
+                <p>Size: {{ data.plant_size }}</p>
+                <p>Sunshine: {{ data.plant_sun_reqs }}</p>
+                <p>Soil requirement: {{ data.plant_soil_reqs }}</p>
+                <p>Watering frequency: {{ data.plant_water_freqs }}</p>
+                <p>Maintenance: {{ data.plant_maint_amount }}</p>
+                <p>Allergy: {{ data.plant_allergy }}</p>
+            </div>
+        </div>
+        <div style="width:966px;padding:10px 20px;">
+            <p class="bottom" style="font-size:23px;">{{ data.plant_desc }}</p>
+        </div>
+    </div>
+</body>
+</html>
