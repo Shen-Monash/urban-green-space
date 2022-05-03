@@ -8,9 +8,9 @@
 secret_key='123456'
 # server_config
 server_host = "0.0.0.0" 
-server_port = 5000
+server_port = 80
 # mysql_host
-mysqlhost="urban-green-futures_db_1"
+mysqlhost="localhost"
 # mysql_port
 mysqlport=3306
 # mysql_user

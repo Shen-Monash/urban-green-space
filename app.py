@@ -1,19 +1,29 @@
 # encoding: utf-8
-from flask import Flask,render_template,request,redirect,make_response,session,send_from_directory
+from flask import Flask,render_template,request,redirect,make_response,session
 import pymysql
 import hashlib
 import math
 from configs import server_host,server_port,secret_key
 from configs import mysqlhost,dbuser,dbpassword,dbname,mysqlport
 
-app = Flask(__name__)
+app = Flask(__name__,)
 app.secret_key=secret_key
 
 def connect():
+    """
+    连接数据库
+    数据库参数储存在configs.py文件中,包括mysqlhost,dbuser,dbpassword,dbname,mysqlport
+    """
     db = pymysql.connect(host=mysqlhost, port=mysqlport, user=dbuser, passwd=dbpassword, db=dbname, charset='utf8', cursorclass=pymysql.cursors.DictCursor)
     return db
 
 def pages(counts,pageNum):
+    """
+    返回分页数据
+    :param ounts: 总条数,int
+    :param pageNum: 每页条数,int
+    :return: [{},{}...]
+    """
     if request.url.find("?")<0:
         url=request.url+"?page="
     else:
@@ -67,7 +77,7 @@ def signup():
         db.commit()
         db.close()
         cur.close()
-        return render_template('signup.html')
+        return render_template('signup.html',text="Successful")
     else:
         return render_template('signup.html')
 
@@ -86,17 +96,21 @@ def checkLogin():
     cur.close()
     if(result):
         res = make_response(redirect('/'))
+        # 用户ID
         session["user_code"] = user_code
+        session["plants"] = result['plants']
         session["login"] = "yes"
         return res
     else:
         return render_template('login.html',text="The user name or password is incorrect!")
 
+# 退出登录
 @app.route('/logout')
 def logout():
     res = make_response(redirect('/'))
     session.pop("login")
     session.pop("user_code")
+    session.pop('plants')
     return res
 
 @app.route('/about')
@@ -186,11 +200,78 @@ def content(plant_id):
     cur = db.cursor()
     cur.execute('select * from plant where plant_id=%s',(plant_id))
     result = cur.fetchone()
-    return render_template('content.html',data=result)
+    db.close()
+    cur.close()
+    if session.get('login') == "yes":
+        plantsList = session.get('plants').split(",")       
+        if plant_id in plantsList:
+            checkStatu = "checked"
+        else:
+            checkStatu = "check"
+        return render_template('content.html',data=result,checkStatu=checkStatu)
+    else:
+        return render_template('content.html',data=result)
+
+@app.route('/add/<plant_id>')
+def add(plant_id):
+    db = connect()
+    cur = db.cursor()
+    cur.execute('select * from plant where plant_id=%s',(plant_id))
+    result = cur.fetchone()
+    plantsList = session.get('plants').split(",")
+    session.pop('plants')
+    plantsList.append(plant_id)
+    plantsString = ",".join(plantsList)
+    cur.execute("Update user Set plants=%s Where user_code=%s",(plantsString,session.get("user_code")))
+    db.commit()
+    db.close()
+    cur.close()
+    session["plants"] = plantsString
+    if plant_id in plantsList:
+        checkStatu = "checked"
+    else:
+        checkStatu = "check"
+    return render_template('content.html',data=result,checkStatu=checkStatu)
+
+@app.route('/pop/<plant_id>')
+def pop(plant_id):
+    db = connect()
+    cur = db.cursor()
+    cur.execute('select * from plant where plant_id=%s',(plant_id))
+    result = cur.fetchone()
+    plantsList = session.get('plants').split(",")
+    session.pop('plants')
+    plantsList.remove(plant_id)
+    plantsString = ",".join(plantsList)
+    cur.execute("Update user Set plants=%s Where user_code=%s",(plantsString,session.get("user_code")))
+    db.commit()
+    db.close()
+    cur.close()
+    session["plants"] = plantsString
+    if plant_id in plantsList:
+        checkStatu = "checked"
+    else:
+        checkStatu = "check"
+    return render_template('content.html',data=result,checkStatu=checkStatu)
+
+# 提醒浇水(如果检查到有checked plant就会触发提醒,轮询间隔时间设置在index.html中)
+@app.route('/search')
+def search():
+    if session.get('user_code'):
+        plantsList = session.get('plants').split(",")
+        if len(plantsList) > 1:
+            return 'success'
+        else:
+            return 'fail'
+    else:
+        return 'fail'
 
 @app.route('/maps')
 def maps():
-    return render_template('maps.html')
-
+    # return redirect('https://www.google.com/maps/search/%E5%85%AC%E5%9B%AD/@-37.8201109,144.9126469,11z/data=!3m1!4b1?hl=en')
+    return render_template('tempmaps.html')
+    # return app.send_static_file('tempmaps.html')
+    
 if __name__ == '__main__':
-    app.run(host=server_host,port=server_port)
+    app.run(host=server_host,port=server_port)     
+    

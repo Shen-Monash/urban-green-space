@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/nucleo-icons.css">
     <link rel="stylesheet" href="../static/css/nucleo-svg.css">
-    <link rel="shortcut icon" href="#">
+    <link rel="icon" href="../static/icon/icon.ico">
     <script type="text/javascript" src="../static/js/42d5adcbca.js" crossorigin="anonymous"></script>
     <title>Urban Green Futures</title>
 </head>
@@ -41,7 +41,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg  blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid px-0">
-                        <a class="navbar-brand font-weight-bolder ms-sm-3" href="/">Urban Green Futures</a>
+                        <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" style="line-height:20px"><img src="../static/img/icon.png" width="20" height="20">&nbsp;Urban Green Futures</a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon mt-2">
                                 <span class="navbar-toggler-bar bar1"></span>
@@ -52,14 +52,14 @@
                         <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
                             <ul class="navbar-nav navbar-nav-hover ms-auto">
                                 <li class="nav-item dropdown dropdown-hover mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" href="/maps" target="screen"><i class="material-icons opacity-6 me-2 text-md">map</i>Maps</a>
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" href="/maps" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>Maps</a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-hover mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" href="/plants" target="screen"><i class="material-icons opacity-6 me-2 text-md">forest</i>Plants
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" href="/plants" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>Plants
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-hover mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/about" target="screen"><i class="material-icons opacity-6 me-2 text-md">article</i>About Us
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/about" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>About Us
                                     </a>
                                 </li>
                                 <li class="nav-item my-auto ms-3 ms-lg-0">
@@ -80,16 +80,16 @@
 
     <!-- Header -->
     <header>
-        <div class="page-header min-vh-100" style="background-image: url('../static/img/photo-1520769945061-0a448c463865.avif');" loading="lazy">
+        <div class="page-header min-vh-100" style="background-image: url('../static/img/bg1.png');" loading="lazy">
             <span class="mask bg-gradient-dark opacity-5"></span>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7 d-flex justify-content-center flex-column">
                         <h1 class="text-white mb-4">Urban Green Futures</h1>
-                        <p class="text-white opacity-8 lead pe-5 me-5">The time is now for it be okay to be great. People in this world shun people for being nice. </p>
+                        <p class="text-white opacity-8 lead pe-5 me-5">Forget about work and school for a while, it's time to immerse yourself in green space!</p>
                         <div class="buttons">
                             <button type="button" class="btn btn-white mt-4">
-                              <a href="/plants" target="screen" class="a-hover">Get Started</a>
+                              <a href="#tomain">Get Started</a>
                             </button>
                         </div>                       
                     </div>
@@ -100,6 +100,7 @@
     <!-- End header -->
 
     <!-- Main -->
+    <div id="tomain"></div>
     <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6" id="intro" style="height:900px;padding:50px">
         <iframe src="/about" frameborder="0" name="screen" id="screen" style="height:800px;" allowTransparency="true" ></iframe>
     </div>
@@ -148,4 +149,29 @@
       </footer> 
       <!-- End footer -->
 </body>
+<script>
+    ///查询浇水 
+    function ajaxget(url,response,successAction) {
+        var ajax = new XMLHttpRequest();
+        ajax.onload = (ev) => {
+            if (ajax.response == response && typeof(successAction)=="function") {
+                successAction();
+            }
+        };
+        ajax.open("get",url);
+        ajax.send();
+    }
+    function water(){
+        function successopen(){
+            alert("There are plants that need watering.");
+        }
+        ajaxget("/search","success",successopen);
+    }    
+    /// 定时器 每time秒查询一次
+    let time = 60
+    let t=window.setInterval(tips,time*1000);
+    function tips(){
+        water();
+    }
+</script>
 </html>

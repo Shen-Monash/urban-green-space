@@ -37,6 +37,11 @@
     <div style="padding-top:20px;">
         <p style="font-size:30px;text-align:center;">{{ data.plant_latin_name }}</p>
         <div style="height:40px;">
+            {% if checkStatu == "check" %}
+            <a class="btn btn-success" href="/add/{{ data.plant_id }}" role="button" style="float:left;">Check</a>
+            {% elif checkStatu == "checked" %}
+            <a class="btn btn-warning" href="/pop/{{ data.plant_id }}" role="button" style="float:left;">Checked</a>
+            {% endif %}
             <a class="btn btn-default" href="javascript:history.back(-1);" role="button" style="float:right;">Go back</a>
         </div>
         <div style="height:400px;padding-top:50px;">
@@ -57,8 +62,10 @@
             </div>
         </div>
         <div style="width:966px;padding:10px 20px;">
-            <p class="bottom" style="font-size:23px;">{{ data.plant_desc }}</p>
+            <p class="bottom" style="font-size:23px;line-height: 30px;">{{ data.plant_desc }}</p>
         </div>
     </div>
 </body>
+<script>
+</script>    
 </html>
