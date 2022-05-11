@@ -10,7 +10,7 @@ secret_key='123456'
 server_host = "0.0.0.0" 
 server_port = 80
 # mysql_host
-mysqlhost="localhost"
+mysqlhost="urban-green-space_db_1"
 # mysql_port
 mysqlport=3306
 # mysql_user
