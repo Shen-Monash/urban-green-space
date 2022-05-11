@@ -8,7 +8,6 @@
     <script src="../static/js/animate.js"></script>  
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/icon/plants.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>Plants</title>
 </head>
 <style>
@@ -67,7 +66,7 @@
     }
     .plant .content .box{
         width: 234px;
-        height: 360px;
+        height: 260px;
         background-color: #FFFFFF;
         float: left;
         margin-left: 14px;
@@ -195,24 +194,10 @@
                     <div style="width:160px;height:120px;overflow:hidden;margin:0 auto;">
                     <img src="../static/img/{{ item.plant_latin_name }}.jpg" class="imgBox" width="160px"> 
                     </div>              
-                    <h3>{{ item.plant_common_name.split(',')[0] }}</h3>
-                </a>
-                <h4>{{ item.plant_latin_name }}</h4>
-
-                <div class="flex items-center justify-center space-x-2 mt-4">
-                    <div class="">
-                        <img src="../static/img/water.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
-                        <p class="flex justify-center">{{ item.plant_water_freqs }}</p>
-                    </div>
-                    <div>
-                        <img src="../static/img/sun.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
-                        <p class="flex justify-center">{{ item.plant_sun_reqs }}</p>
-                    </div>
-                    <div>
-                        <img src="../static/img/location.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
-                        <p class="flex justify-center">{{ item.location }}</p>
-                    </div>
-                </div>
+                    <h3>{{ item.plant_latin_name }}</h3>
+                </a>               
+                <h5>{{ item.plant_family }}</h5>
+                <h4>{{ item.plant_common_name }}</h4>
             </div>
             {% endfor %}
         {% endif %}
