@@ -184,7 +184,7 @@
                         <img src="../static/img/sun1.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
                         {% elif item.plant_sun_reqs=="mixed" %}
                         <img src="../static/img/sun2.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
-                        {% elif item.plant_sun_reqs=="full" %}
+                        {% else %}
                         <img src="../static/img/sun.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
                         {% endif %}
                         <p class="flex justify-center">{{ item.plant_sun_reqs }}</p>
