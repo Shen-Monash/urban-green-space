@@ -1,3 +1,5 @@
 Flask
 Flask-MySQL
 PyMySQL
+Flask-Mail
+Flask-APScheduler
