@@ -33,10 +33,6 @@
     .a-hover:hover{
       color:#4CAF50;
     }
-    
-    html, body{
-        height:85%;
-    }
 </style>   
 <body>
     <!-- Navbar -->
@@ -45,7 +41,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg  blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid px-0">
-                        <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" style="line-height:20px; font-size:20px"><img src="../static/img/icon.png" width="40" height="40">&nbsp;Urban Green Futures</a>
+                        <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" style="line-height:20px"><img src="../static/img/icon.png" width="20" height="20">&nbsp;Urban Green Futures</a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon mt-2">
                                 <span class="navbar-toggler-bar bar1"></span>
@@ -55,28 +51,22 @@
                         </button>
                         <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
                             <ul class="navbar-nav navbar-nav-hover ms-auto">
-                                <li class="nav-item dropdown mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" href="/maps" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>Maps</a>
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" href="/maps" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>Maps</a>
                                 </li>
-                                <li class="nav-item dropdown mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" href="/plants" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>Plants
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" href="/plants" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>Plants
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/about" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>About Us
+                                <li class="nav-item dropdown dropdown-hover mx-2">
+                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/about" target="screen"><i class="material-icons opacity-6 me-2 text-md"></i>About Us
                                     </a>
                                 </li>
-                                {% if login=="yes" %}
-                                <li class="nav-item dropdown mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/usercenter" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>User Center
-                                    </a>
-                                </li>
-                                {% endif %}
                                 <li class="nav-item my-auto ms-3 ms-lg-0">
                                     {% if login=="yes" %}
-                                    <a href="/logout" class="btn btn-sm  bg-gradient-warning  mb-0 me-1 mt-2 mt-md-0" style="font-size:20px">Logout</a>
+                                    <a href="/logout" class="btn btn-sm  bg-gradient-warning  mb-0 me-1 mt-2 mt-md-0">Logout</a>
                                     {% else %}
-                                    <a href="/login" class="btn btn-sm  bg-gradient-success  mb-0 me-1 mt-2 mt-md-0" style="font-size:20px">Login</a>
+                                    <a href="/login" class="btn btn-sm  bg-gradient-success  mb-0 me-1 mt-2 mt-md-0">Login</a>
                                     {% endif %}
                                 </li>
                             </ul>
@@ -179,14 +169,9 @@
     }    
     /// 定时器 每time秒查询一次
     let time = 60
-    ///let t=window.setInterval(tips,time*1000);
+    let t=window.setInterval(tips,time*1000);
     function tips(){
         water();
     }
-
-    function toMain(){
-        window.location.href = "#tomain";
-    }
-
 </script>
 </html>

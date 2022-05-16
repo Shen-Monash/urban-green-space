@@ -55,23 +55,17 @@
                         </button>
                         <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
                             <ul class="navbar-nav navbar-nav-hover ms-auto">
-                                <li class="nav-item dropdown mx-2">
+                                <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" href="/maps" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>Maps</a>
                                 </li>
-                                <li class="nav-item dropdown mx-2">
+                                <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" href="/plants" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>Plants
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown mx-2">
+                                <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/about" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>About Us
                                     </a>
                                 </li>
-                                {% if login=="yes" %}
-                                <li class="nav-item dropdown mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" href="/usercenter" target="screen" style="font-size:20px" onclick="toMain()"><i class="material-icons opacity-6 me-2 text-md"></i>User Center
-                                    </a>
-                                </li>
-                                {% endif %}
                                 <li class="nav-item my-auto ms-3 ms-lg-0">
                                     {% if login=="yes" %}
                                     <a href="/logout" class="btn btn-sm  bg-gradient-warning  mb-0 me-1 mt-2 mt-md-0" style="font-size:20px">Logout</a>
@@ -179,7 +173,7 @@
     }    
     /// 定时器 每time秒查询一次
     let time = 60
-    ///let t=window.setInterval(tips,time*1000);
+    let t=window.setInterval(tips,time*1000);
     function tips(){
         water();
     }

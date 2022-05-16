@@ -276,6 +276,47 @@ def maps():
 def home():
     return render_template('home.html')
 
+@app.route('/usercenter')
+def usercenter(): 
+    db = connect()
+    cur = db.cursor()
+    cur.execute("select * from plant Left Join plant_location on plant.plant_id = plant_location.plant_id where plant.plant_id in ("+ session.get('plants') +")")
+    pag = pages(len(cur.fetchall()), 8)
+    cur.execute('select * from plant Left Join plant_location on plant.plant_id = plant_location.plant_id where plant.plant_id in ('+ session.get('plants') +")" + pag['limit'])
+    result = cur.fetchall()
+    db.close()
+    cur.close()
+    return render_template('usercenter.html', data=result, pag=pag)
+
+@app.route('/pop2/<plant_id>')
+def pop2(plant_id):
+    db = connect()
+    cur = db.cursor()
+    plantsList = session.get('plants').split(",")
+    session.pop('plants')
+    plantsList.remove(plant_id)
+    plantsString = ",".join(plantsList)
+    cur.execute("Update user Set plants=%s Where user_code=%s",(plantsString,session.get("user_code")))
+    db.commit()
+    db.close()
+    cur.close()
+    session["plants"] = plantsString
+    return redirect('/usercenter')
+
+@app.route('/email')
+def email():
+    db = connect()
+    cur = db.cursor()
+    inputEmail = request.args.get('email')
+    md5 = hashlib.md5()
+    md5.update(inputEmail.encode("utf8"))
+    email=md5.hexdigest()
+    cur.execute('UPDATE user SET email=%s WHERE user_code=%s',(email,session.get("user_code")))
+    db.commit()
+    db.close()
+    cur.close()
+    return "success"   
+
 
 if __name__ == '__main__':
     app.run(host=server_host,port=server_port)     

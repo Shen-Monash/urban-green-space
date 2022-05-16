@@ -424,10 +424,10 @@ limitations under the License.
     }
 
     /** Number of POIs to show on widget load. */
-    const ND_NUM_PLACES_INITIAL = 500;
+    const ND_NUM_PLACES_INITIAL = 10;
 
     /** Number of additional POIs to show when 'Show More' button is clicked. */
-    const ND_NUM_PLACES_SHOW_MORE = 5;
+    const ND_NUM_PLACES_SHOW_MORE = 20;
 
     /** Maximum number of place photos to show on the details panel. */
     const ND_NUM_PLACE_PHOTOS_MAX = 6;
@@ -822,65 +822,36 @@ limitations under the License.
     const CONFIGURATION = {
       "capabilities": {"search":true,"distances":false,"directions":false,"contacts":true,"atmospheres":true,"thumbnails":true},
       "pois": [
-        //{"placeId": "ChIJU5r9AZVq1moR8JsxBXZWBA8"},
-        {"placeId": "ChIJpdNDicJq1moRwJ0xBXZWBA8"},
-        //{"placeId": "ChIJ8azSDclq1moR95pqQsZrgds"},
-        {"placeId": "ChIJA6X9PCBr1moRE_aSojVcXP4"},
-        //{"placeId": "ChIJ-cZauMtq1moRb-YpRUgwcvA"},
-        {"placeId": "ChIJjymQgQtr1moRByHcpJ7fKaA"},
-        {"placeId": "ChIJPfgDhEoV1moR4J0xBXZWBA8"},
-        //{"placeId": "ChIJKeXcDmtD1moRMWNLPiw_nU4"},
-        {"placeId": "ChIJtzK3d2JE1moRVX7Vkq15pSE"},
-        {"placeId": "ChIJLVyXe_ND1moRxvpEwaG-1qc"},
-        //{"placeId": "ChIJGVRJzqBE1moRIHcxBXZWBA8"},
-        {"placeId": "ChIJV29Vg2dD1moRp9sJkDR15UE"},
-        //{"placeId": "ChIJmYRv-k6E1moRpCXN24aB_gs"},
-        {"placeId": "ChIJT7mn3UeE1moRcE8yBXZWBA8"},
-        {"placeId": "ChIJ2zaQsm6F1moRgPwxBXZWBA8"},
-        //{"placeId": "ChIJLYNr9B6F1moRucpHi4tpYkI"},
-        {"placeId": "ChIJJSr-WHaF1moRIJgxBXZWBA8"},
-
-        {"placeId": "ChIJk27FxJti1moRcD0xBXZWBA8"},
-        //{"placeId": "ChIJd8tr3suJ1moRkBwxBXZWBA8"},
-        {"placeId": "ChIJqwsGZuiJ1moR0JAxBXZWBA8"},
-        {"placeId": "ChIJL5_RnymI1moRIB0xBXZWBA8"},
-
-        //{"placeId": "ChIJ6X18a3lh1moRgOAxBXZWBA8"},
-        {"placeId": "ChIJPUYHRENh1moRsOAxBXZWBA8"},
-        //{"placeId": "ChIJrcMGA0lh1moRQJAxBXZWBA8"},
-        {"placeId": "ChIJx7gh_9Fj1moRT5Ui4VC7eDg"},
-        //{"placeId": "ChIJBzgbpNJj1moRLzh_DA4tVis"},
-        {"placeId": "ChIJ9w14c69h1moRAFIwBXZWBA8"},
-        {"placeId": "ChIJx3js4Wli1moRROaoMOljCQM"},
-        
-        // {"placeId": "ChIJeUkVMWFn1moRcHAyBXZWBA8"},
-        {"placeId": "ChIJB1A54dRd1moRRCTwdD0CD-w"},
-        // {"placeId": "ChIJFSps5zZd1moRPWPxpJDM7ZM"},
-         {"placeId": "ChIJxSo68pVd1moRUN4xBXZWBA8"},
-        
-        // {"placeId": "ChIJz7iLuB9d1moRgH4xBXZWBA8"},
-        {"placeId": "ChIJwWkhINxc1moRGCMNE4DyXd4"},
-        // {"placeId": "ChIJJ377be1d1moRbMixgo6rNCo"},
-        // {"placeId": "ChIJGZLAFwRd1moRaKgCjW_AyxA"},
-        // {"placeId": "ChIJhXVrzv5c1moRg-oJP1o3iFA"},
-
-        // {"placeId": "ChIJuaq5d-xp1moRGQjSIV2d3ZQ"},
-        {"placeId": "ChIJR3yPW-Jp1moR-YraJApN2gI"},
-        // {"placeId": "ChIJb99GSBBC1moR0IwxBXZWBA8"},
-        {"placeId": "ChIJe-SUJZdD1moRB52JJmGU2xU"},
-        // {"placeId": "ChIJV4_qQdxp1moRuaR1_PJoYmQ"},
-         {"placeId": "ChIJGznB4hpC1moR8IwxBXZWBA8"},
-        // {"placeId": "ChIJQ0s8l_hp1moRQa_M0FEv780"}
-        {"placeId": "ChIJ9213Ywtp1moR3MWMVHpDZEk"},
-        {"placeId": "ChIJsxIqPCJp1moRILjr3jbJxjc"},
-        {"placeId": "ChIJ____W4Vp1moRT9oivNuD2P8"},
-        {"placeId": "ChIJDfb0TRxp1moRtujViU4nFno"},
-        {"placeId": "ChIJw15qMAFp1moR-IM7kcY6338"}
+          {"placeId": "ChIJoS72YKNC1moRL-iksMO0MqE"},
+          //{"placeId": "ChIJIXktmrlC1moRQPgxBXZWBA8"},
+          //{"placeId": "ChIJc8A97rlC1moRUPD0CXZWBB0"},
+          {"placeId": "ChIJA4HtjbBC1moR1m5SzkpSjzg"},
+          {"placeId": "ChIJ4-k_G65C1moRX3g97je74tA"},
+          //{"placeId": "ChIJn3bADbFC1moRJrUvxeBEcpo"},
+          {"placeId": "ChIJD1KdqLdC1moRtWoFfe_AKZY"},
+          //{"placeId": "ChIJ667YGLBC1moRaha6KH1T2ak"},
+          {"placeId": "ChIJs5aC18VD1moRLbuFIYPwRHc"},
+          {"placeId": "ChIJgRXO-rRC1moRWhgTu2bMh8o"},
+          {"placeId": "ChIJwc7xtLNC1moR394DMjtYXQg"},
+          {"placeId": "ChIJO40p-5ZC1moRwNcxBXZWBA8"},
+          {"placeId": "ChIJGSSIDKZC1moRisWTaYaaq18"},
+          {"placeId": "ChIJnQHt6Uld1moRgIUxBXZWBA8"},
+          {"placeId": "ChIJX6ytzMNC1moREIYxBXZWBA8"},
+          {"placeId": "ChIJIXktmrlC1moRQPgxBXZWBA8"},
+          {"placeId": "ChIJc8A97rlC1moRUPD0CXZWBB0"},
+          {"placeId": "ChIJn7QXophC1moRcngInUmnTwg"},
+          {"placeId": "ChIJvT5Tn4dC1moREyftGp1JbEQ"},
+          {"placeId": "ChIJkwxlxuln1moRIof0N93Vpo4"},
+          {"placeId": "ChIJL3Gd_Vtd1moR-ONaL1H6ZD0"},
+          {"placeId": "ChIJn3bADbFC1moRJrUvxeBEcpo"},
+          {"placeId": "ChIJNxdIy6VC1moR1GUwex6vXhU"},
+          {"placeId": "ChIJ7bX4PfJn1moRYIkxBXZWBA8"},
+          {"placeId": "ChIJ667YGLBC1moRaha6KH1T2ak"}
 
       ],
       "mapRadius": 5000,
       //"mapOptions": {"center":{"lat":-37.9145479,"lng":145.127492},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":false,"zoom":16,"zoomControl":true,"maxZoom":20},
-      "mapOptions": {"center":{"lat":-37.840935,"lng":144.946457},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":false,"zoom":16,"zoomControl":true,"maxZoom":20},
+      "mapOptions": {"center":{"lat":-37.8166373,"lng":144.9654273},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":false,"zoom":16,"zoomControl":true,"maxZoom":20},
       "mapsApiKey": "AIzaSyC8hmiXyp8Qfejg9Wji8GFRwPDvu8FXB0k"
     };
 
