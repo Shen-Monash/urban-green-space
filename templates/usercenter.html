@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../static/js/animate.js"></script>  
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/icon/plants.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>User Center</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;/*改整个网页的字体*/
+    }
+    img{
+        display: block;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .plant{
+        width: 1006px;
+        height: 672px;
+        margin: 0 auto;
+    }
+    .plant .title{
+        width: 100%;
+        height: 58px;
+    }
+    .plant .title h1{
+        width: 234px;
+        height: 58px;
+        float: left;
+        text-align: left;   
+        color: #333;
+        font-size: 22px;
+        font-weight: 200;
+        line-height: 68px;
+    }
+    .plant .title .h2{
+        width: 234px;
+        height: 58px;
+        float: right;
+        color: #424242;
+        font-size: 16px;
+        font-weight: 200;
+        text-align: right;
+        line-height: 68px;
+        cursor: pointer;
+    }
+    .plant .title .h2:hover{
+        color: #ff6700;
+    }
+    .plant .content{
+        width: 100%;
+        height: 614px;
+    }
+    .plant .content .box{
+        width: 234px;
+        height: 360px;
+        background-color: #FFFFFF;
+        float: left;
+        margin-left: 14px;
+        margin-bottom: 14px;
+    }
+    .plant .content .box:hover{
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+        transform: translate(0,-3px);
+    }
+    .plant .content .box{
+        transition:all 0.5s;
+    }
+    .plant .content .box img{
+        margin: 0 auto;
+    }
+    .plant .content .box h3 {
+        line-height: 21px;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+    }
+    .plant .content .box h3 a{
+        color: #333333;
+    }
+    .plant .content .box h4{
+        font-weight: lighter;
+        margin: 0 10px 10px;
+        height: 18px;
+        font-size: 12px;
+        color: #B0B0B0;
+        text-align: center;
+    }
+    .plant .content .box h5{
+        line-height: 21px;
+        font-size: 14px;
+        font-weight: lighter;
+        margin: 0 10px 14px;
+        color: #ff6700;
+        text-align: center;
+    }
+    .plant .content .box h5 .h6{
+        margin: 0 10px 14px;
+        color: #b0b0b0;
+        text-align: center;
+        text-decoration: Line-through;
+    }
+    .plant .content .box2{
+        margin-bottom: 0;
+    }
+    .plant .content .box3{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .plant .content .box3 .top{
+        margin:0 auto;
+        background-color: #e53935;
+        width: 64px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .plant .content .box3 .top1{
+        height: 20px;
+    }
+    .form-control{
+        width: 140px;
+        margin:10px 25px;
+    }
+</style>
+<body style="background-color:transparent"> 
+    <div class="plant">
+        <div style="text-align:center;">
+            <h1 class="text-4xl">My Plants</h1>
+            <h4>This page records the plants you have added. You can add you growing plants and will remind</h4>
+            <h4>you to water them. You can browse our plants to find plants you wish to grow.</h4>
+        </div>
+        <div style="margin:0 auto 10px;width:1006px;height: 63px;border-top:2px solid #cccccc;border-bottom:2px solid #cccccc">
+            <form class="form-inline">
+                <div class="form-group" style="margin:15px 0;">
+                  <label for="email">If you would like to be reminded to water your plants, please enter your email here and submit.</label>
+                  <input type="email" class="form-control" id="email" placeholder="" style="height:30px;width:200px;margin-top:0">
+                  <button type="submit" class="btn btn-default" onclick="javascript:Email();">Submit</button>
+                </div>               
+            </form>
+        </div>
+        <div class="content">
+        {% if data %}
+            {% for item in data %}
+            <div class="box box3" style="background-color: #fcfcfc;position:relative;">
+                <div class="top1"></div>
+                <a href="/content/{{ item.plant_id }}" target="screen">
+                    <div style="width:160px;height:120px;overflow:hidden;margin:0 auto;">
+                    <img src="../static/img/{{ item.plant_latin_name }}.jpg" class="imgBox" width="160px"> 
+                    </div>              
+                    <h3>{{ item.plant_common_name.split(',')[0] }}</h3>
+                </a>
+                <h4>{{ item.plant_latin_name }}</h4>
+
+                <div class="flex items-center justify-center space-x-2 mt-4">
+                    <div class="">
+                        <img src="../static/img/water.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        <p class="flex justify-center">{{ item.plant_water_freqs }}</p>
+                    </div>
+                    <div>
+                        <img src="../static/img/sun.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        <p class="flex justify-center">{{ item.plant_sun_reqs }}</p>
+                    </div>
+                    <div>
+                        <img src="../static/img/location.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        <p class="flex justify-center">{{ item.location }}</p>
+                    </div>
+                </div>
+                <div style="position:absolute;left:80px;bottom:10px">
+                    <a class="btn btn-warning" href="/pop2/{{ item.plant_id }}" role="button" style="float:left;">Delete</a>
+                </div>            
+            </div>            
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    {% if data %}
+    <div style='width:300px;margin:0 auto'>{{ pag.strs|safe }}</div>   
+    {% endif %}
+    </div>
+</body>
+<script>
+    function ajaxget(url,response,successAction) {
+        var ajax = new XMLHttpRequest();
+        ajax.onload = (ev) => {
+            if (ajax.response == response && typeof(successAction)=="function") {
+                successAction();
+            }
+        };
+        ajax.open("get",url);
+        ajax.send();
+    }
+    function Email(){
+        let email = document.getElementById('email').value
+        url = '/email?'+'email='+email;
+        function successAction(){
+            alert("Successful.");
+        }
+        ajaxget(url,"success",successAction);
+    }
+</script>
+</html>

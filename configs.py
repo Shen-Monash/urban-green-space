@@ -2,7 +2,8 @@
 
 # pip install flask
 # pip install pymysql
-
+# pip install Flask-Mail
+# pip install Flask-APScheduler
 
 # session_key
 secret_key='123456'
@@ -19,3 +20,8 @@ dbuser='root'
 dbpassword='123456'
 # mysql_db
 dbname='plantdb'
+
+# mail_server
+mailserver = 'smtp.gmail.com' #gmail的邮件服务器
+mailusername = 'brucelee402711@gmail.com' #用来发送邮件的邮箱地址
+mailpassword = 'jnleyzbzrsogkzrk'   #专用密码
