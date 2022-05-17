@@ -143,8 +143,8 @@
     <div class="plant">
         <div style="text-align:center;">
             <h1 class="text-4xl">My Plants</h1>
-            <h4>This page records the plants you have added. You can add you growing plants and will remind</h4>
-            <h4>you to water them. You can browse our plants to find plants you wish to grow.</h4>
+            <h4 class="mt-4 text-xl">This page records the plants you have added. You can add you growing plants and will remind</h4>
+            <h4 class="my-4 text-xl">you to water them. You can browse our plants to find plants you wish to grow.</h4>
         </div>
         <div style="margin:0 auto 10px;width:1006px;height: 63px;border-top:2px solid #cccccc;border-bottom:2px solid #cccccc">
             <form class="form-inline">
@@ -170,16 +170,34 @@
 
                 <div class="flex items-center justify-center space-x-2 mt-4">
                     <div class="">
+                        {% if item.plant_water_freqs=="low" %}
+                        <img src="../static/img/water2.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% elif item.plant_water_freqs=="med" %}
+                        <img src="../static/img/water1.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% elif item.plant_water_freqs=="high" %}
                         <img src="../static/img/water.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% endif %}
                         <p class="flex justify-center">{{ item.plant_water_freqs }}</p>
                     </div>
                     <div>
+                        {% if item.plant_sun_reqs=="shady" %}
+                        <img src="../static/img/sun1.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% elif item.plant_sun_reqs=="mixed" %}
+                        <img src="../static/img/sun2.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% else %}
                         <img src="../static/img/sun.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% endif %}
                         <p class="flex justify-center">{{ item.plant_sun_reqs }}</p>
                     </div>
                     <div>
-                        <img src="../static/img/location.jpg" style="border-radius:20px;overflow:hidden" class="w-1/2">
-                        <p class="flex justify-center">{{ item.location }}</p>
+                        {% if item.location=="indoors" %}
+                        <img src="../static/img/location.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% elif item.location=="outdoors" %}
+                        <img src="../static/img/location2.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% elif item.location=="indoors and outdoors" %}
+                        <img src="../static/img/location1.PNG" style="border-radius:20px;overflow:hidden" class="w-1/2">
+                        {% endif %}
+                        <p class="flex justify-center text-center">{{ item.location }}</p>
                     </div>
                 </div>
                 <div style="position:absolute;left:80px;bottom:10px">
@@ -190,9 +208,9 @@
         {% endif %}
         </div>
     </div>
-    {% if data %}
-    <div style='width:300px;margin:0 auto'>{{ pag.strs|safe }}</div>   
-    {% endif %}
+        {% if data %}
+        <div style='width:300px;margin:0 auto;'>{{ pag.strs|safe }}</div>
+        {% endif %}
     </div>
 </body>
 <script>
