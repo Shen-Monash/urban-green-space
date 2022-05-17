@@ -195,6 +195,9 @@
     </div>
     <div class="plant">
         <div class="content">
+            <div style="width:1006px;height:40px">
+                <a class="btn btn-default" href="/plants" role="button" style="float:right;">Show all plants</a>
+            </div>
         {% if data %}
             {% for item in data %}
             <div class="box box3" style="background-color: #fcfcfc">
@@ -241,6 +244,10 @@
                 </div>
             </div>
             {% endfor %}
+        {% else %}
+            <div>
+                <h1 class="text-4xl">No matching plants were found.</h1>
+            </div>
         {% endif %}
         </div>
     </div>
